@@ -1,0 +1,22 @@
+<table class="admin_items has_border">
+	<thead>
+		<tr>
+			<th>ニュースID</th>
+			<th>タイトル</th>
+			<th>本文</th>
+			<th>ジャンル</th>
+			<th>公開ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% news_letters.each do |item| %>
+			<tr>
+				<td class="text-center"><%= news_letter.id %></td>
+				<td><%= link_to item.title, admin_news_letter_path(news_letter), class: "underline" %></td>
+				<td class="text-center"><%= item.text %></td>
+				<td><%= link_to news_letter.genre.name, admin_news_letters_path(genre_id: news_letter.genre_id) %></td>
+				<td>公開ステータス</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

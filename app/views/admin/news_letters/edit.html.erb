@@ -1,0 +1,4 @@
+<section class="inner">
+	<h2 class="section-ttl"><%= @news_letter.name %>の編集</h2>
+  <%= render 'form', news_letter: @news_letter, url: admin_news_letter_path(@news_letter), submit: '更新' %>
+</section>
