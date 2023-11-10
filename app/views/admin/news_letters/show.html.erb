@@ -1,7 +1,7 @@
 <section class="inner">
 	<h2 class="section-ttl">ニュース詳細</h2>
 	<div class="flex">
-		<table class="admin_item_info">
+		<table class="admin_news_letter_info">
 			<thead>
 				<tr>
 					<th></th>	
@@ -10,40 +10,26 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>商品名</td>
-					<td><%= @item.name %></td>
+					<td>タイトル</td>
+					<td><%= @news_letter.news_title %></td>
 				</tr>
 				<tr>
-					<td>商品説明</td>
-					<td><%= @item.introduction %></td>
+					<td>本文</td>
+					<td><%= @news_letter.news_text %></td>
 				</tr>
 				<tr>
 					<td>ジャンル</td>
-					<td><%= link_to @item.genre.name, admin_items_path(genre_id: @item.genre_id), class: "underline" %></td>
-				</tr>
-				<tr>
-					<td>税抜価格</td>
-					<td><%= @item.price %>円</td>
-				</tr>
-				<tr>
-					<td>販売ステータス</td>
-					<td>
-						<% if @item.is_active? %>
-							<span class="text-active">販売中</span>
-						<% else %>
-							<span class="text-invalid">販売停止中</span>							
-						<% end %>
-					</td>
+					<td><%= link_to @news_letter.genre.name, admin_news_letters_path(genre_id: @item.genre_id), class: "underline" %></td>
 				</tr>
 			</tbody>
 		</table>
 		<div>
 			<div class="image_field">
-				<%= image_tag @item.get_image, id: "img_prev", class: "admin_item_image" %>
+				<%= image_tag @news_letter.get_image, id: "img_prev", class: "admin_item_image" %>
 			</div>
 		</div>
 		<div class="flex align-center pl5">
-			<%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
+			<%= link_to "編集する", edit_admin_news_letter_path(@news_letter), class: "btn btn-success" %>
 		</div>
 	</div>
 </section>

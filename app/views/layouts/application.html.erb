@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header class="<%= (admin_signed_in? ? "admin_header" : "") %>">
+    <header class="<%= (admin_signed_in? ? 'admin_header' : '') %>">
       <div class="header-content">
         <%= link_to 'Overcome', (admin_signed_in? ? admin_top_path : root_path), class: "logo" %>
         <ul class="flex">

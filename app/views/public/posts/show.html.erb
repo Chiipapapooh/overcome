@@ -1,0 +1,35 @@
+<section class="inner">
+	<h2 class="section-ttl">投稿詳細</h2>
+	<div class="flex">
+		<table class="admin_post_info">
+			<thead>
+				<tr>
+					<th></th>	
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>タイトル</td>
+					<td><%= @post.title %></td>
+				</tr>
+				<tr>
+					<td>本文</td>
+					<td><%= @post.text %></td>
+				</tr>
+				<tr>
+					<td>ジャンル</td>
+					<td><%= link_to @post.genre.name, admin_posts_path(genre_id: @post.genre_id), class: "underline" %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<div class="image_field">
+				<%= image_tag @post.get_image, id: "img_prev", class: "admin_post_image" %>
+			</div>
+		</div>
+		<div class="flex align-center pl5">
+			<%= link_to "編集する", edit_admin_post_path(@post), class: "btn btn-success" %>
+		</div>
+	</div>
+</section>

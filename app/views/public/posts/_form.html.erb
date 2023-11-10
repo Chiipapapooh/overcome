@@ -1,4 +1,4 @@
-<%= form_with model:news_letter, url: url do |f| %>
+<%= form_with model:post, url: url do |f| %>
 	<%= render 'layouts/error_messages', resource: news_letter %>
 	<div class="flex">
 		<div>
@@ -9,7 +9,7 @@
 				<p>選択するとプレビューされます。<br>画像未選択のままだと、<br>「画像準備中」になります。</p>
 			</div>
 		</div>
-		<table class="admin_news_letter_info news_letter_form">
+		<table class="admin_post_info item_form">
 			<thead>
 				<tr>
 					<th></th>
@@ -18,12 +18,12 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%= f.label :news_title, "タイトル" %></td>
-					<td><%= f.text_field :news_title %></td>
+					<td><%= f.label :title, "タイトル" %></td>
+					<td><%= f.text_field :title %></td>
 				</tr>
 				<tr>
-					<td><%= f.label :news_text, "本文" %></td>
-					<td><%= f.text_area :news_text, rows: 3 %></td>
+					<td><%= f.label :text, "本文" %></td>
+					<td><%= f.text_area :text, rows: 3 %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :genre_id, "ジャンル" %></td>

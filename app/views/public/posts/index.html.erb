@@ -1,0 +1,18 @@
+<section class="wrapper flex">
+	<div class="inner">
+		<% if params[:genre_id] %>
+			<h2 class="section-ttl"><%= @genre.name %>の投稿一覧 (全<%= @all_posts_count %>件)</h2>
+		<% else %>
+			<h2 class="section-ttl">投稿一覧 (全<%= @all_posts_count %>件)</h2>
+		<% end %>
+		<h3 class="text-right">
+			<%= link_to "+", new_admin_post_path, class: "new_admin_post" %>
+		</h3>
+		<% if @news_letters.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+			<%= render 'admin/posts/index', posts: @posts %>
+			<%= paginate @posts %>
+		<% else %>
+			<h3>対応する投稿はありませんでした。</h3>
+		<% end %>
+	</div>
+</section>

@@ -1,0 +1,30 @@
+<section class="wrapper flex">
+	<div class="sidebar">
+		<h3>ジャンル一覧</h3>
+		<% @genres.each do |genre| %>
+			<%= link_to genre.name, news_letters_path(genre_id: genre.id) %>
+		<% end %>
+	</div>
+	<div class="content">
+		<% if params[:genre_id] %>
+			<h2 class="section-ttl"><%= @genre.name %>のニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
+		<% else %>
+			<h2 class="section-ttl">ニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
+		<% end %>
+		<% if @news_letters.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+			<div class="items">
+				<% @news_letters.each do |news_letter| %>
+					<%= link_to news_letter_path(news_letter) do %>
+						<%= image_tag news_letter.get_image, format: "jpeg", fallback: "no-image.png" %>
+						<h5><%= news_letter.genre.name %></h5>
+						<p><%= news_letter.news_title %></p>
+						<p><%= news_letter.news_text %></p>
+					<% end %>
+				<% end %>
+			</div>
+			<%= paginate @news_letters %>
+		<% else %>
+			<h3>対応するニュースはありませんでした。</h3>
+		<% end %>
+	</div>
+</section>
