@@ -20,6 +20,10 @@
 					<td><%= f.label :last_name_kana, "(メイ)" %> <%= f.text_field :last_name_kana, :placeholder =>"#{@customer.last_name_kana}" %></td>
 				</tr>
 				<tr>
+					<td>ニックネーム</td>
+					<td><%= f.text_field :nickname, :placeholder =>"#{@customer.nickname}" %></td>
+				</tr>
+				<tr>
 					<td><%= f.label :email, "メールアドレス" %></td>
 					<td colspan="2"><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@customer.email}" %></td>
 				</tr>

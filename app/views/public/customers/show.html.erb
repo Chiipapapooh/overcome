@@ -17,13 +17,15 @@
 		<tbody>
 			<tr>
 				<td>名前</td>
-				<td>(姓) <%= @customer.first_name %></td>
-				<td>(名) <%= @customer.last_name %></td>
+				<td><%= @customer.last_name %> <%= @customer.first_name %></td>
 			</tr>
 			<tr>
 				<td>フリガナ</td>
-				<td>(セイ) <%= @customer.first_name_kana %></td>
-				<td>(メイ) <%= @customer.last_name_kana %></td>
+				<td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+			</tr>
+			<tr>
+				<td>ニックネーム</td>
+				<td><%= @customer.nickname %></td>
 			</tr>
 			<tr>
 				<td>メールアドレス</td>

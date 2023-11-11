@@ -6,34 +6,94 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="<%= (admin_signed_in? ? 'admin_header' : '') %>">
-      <div class="header-content">
-        <%= link_to 'Overcome', (admin_signed_in? ? admin_top_path : root_path), class: "logo" %>
-        <ul class="flex">
-          <% if admin_signed_in? %>
-          <li>投稿一覧</li>
-          <li>ニュース一覧</li>
-          <li>会員一覧</li>
-          <li>ジャンル一覧</li>
-          <li>ログアウト</li>
-          <% elsif customer_signed_in? %>
-          <p>ようこそ、<%= current_customer.nickname %>さん！</p>
-          <li>マイページ</li>
-          <li>投稿一覧</li>
-          <li>ニュース一覧</li>
-          <li>ログアウト</li>
-          <% else %>
-          <li>About</li>
-          <li>新規登録</li>
-          <li>ログイン</li>
-        </ul>
-      </div>
+    <header>
+        <% if customer_signed_in? %>
+          <%= render 'layouts/header_customer' %>
+        <% elsif admin_signed_in? %>
+          <%= render 'layouts/header_admin' %>
+        <% else %>
+          <%= render 'layouts/header_logout' %>
+        <% end %>
     </header>
+    <!--<header class="<%= (admin_signed_in? ? 'admin_header' : '') %>">-->
+    <!--  <div class="header-content">-->
+    <!--    <%#= link_to 'Overcome', (admin_signed_in? ? admin_top_path : root_path), class: "logo" %>-->
+    <!--    <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+    <!--     <ul class="navbar-nav ml-auto">-->
+    <!--      <%# if admin_signed_in? %>-->
+    <!--      <li>-->
+    <!--        <%#= link_to admin_posts_path, class: 'nav-link text-dark' do %>-->
+    <!--        投稿一覧-->
+    <!--        <%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to admin_news_letters_path, class: 'nav-link text-dark' do %>-->
+    <!--        ニュース一覧-->
+    <!--        <%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to admin_customers_path, class: 'nav-link text-dark' do %>-->
+    <!--        会員一覧-->
+    <!--        <%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to admin_genres_path, class: 'nav-link text-dark' do %>-->
+    <!--        ジャンル一覧-->
+    <!--        <%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to destroy_admin_session_path, class: 'nav-link text-dark' do %>-->
+    <!--        ログアウト-->
+    <!--        <%# end %>-->
+    <!--      </li>-->
+    <!--      <%# elsif customer_signed_in? %>-->
+          <!--<p>ようこそ、<%#= current_customer.nickname %>さん！</p>-->
+    <!--      <li>-->
+    <!--        <%#= link_to mypage_path, class: 'nav-link text-dark' do %>-->
+    <!--        マイページ-->
+    <!--        <%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to posts_path, class: 'nav-link text-dark' do %>-->
+    <!--        投稿一覧-->
+    <!--      　<%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to news_letters_path, class: 'nav-link text-dark' do %>-->
+    <!--        ニュース一覧-->
+    <!--      　<%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to destroy_customer_session_path, class: 'nav-link text-dark' do %>-->
+    <!--        ログアウト-->
+    <!--      　<%# end %>-->
+    <!--      </li>-->
+    <!--      <%# else %>-->
+    <!--      <li>-->
+    <!--        <%#= link_to about_path, class: 'nav-link text-dark' do %>-->
+    <!--        About-->
+    <!--      　<%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>-->
+    <!--        新規登録-->
+    <!--      　<%# end %>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        <%#= link_to new_customer_session_path, class: 'nav-link text-dark' do %>-->
+    <!--        ログイン-->
+    <!--      　<%# end %>-->
+    <!--      </li>-->
+    <!--      <%# end %>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <!-- </div>-->
+    <!--</header>-->
     <%= yield %>
   </body>
 </html>

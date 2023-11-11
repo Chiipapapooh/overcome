@@ -1,11 +1,13 @@
 class Public::NewsLettersController < ApplicationController
  def show
    @news_letter = NewsLetter.find(params[:id])
+   @genres = Genre.all
  end 
  
  def index
    @news_letters = NewsLetter.all
    @news_letter = NewsLetter.new
+   @genres = Genre.all
  end 
  
  def destroy

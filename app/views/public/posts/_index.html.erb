@@ -1,20 +1,18 @@
-<table class="admin_posts has_border">
+<table class="posts has_border">
 	<thead>
 		<tr>
 			<th>投稿ID</th>
 			<th>タイトル</th>
 			<th>本文</th>
-			<th>ジャンル</th>
 			<th>公開ステータス</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% posts.each do |item| %>
+		<% posts.each do |post| %>
 			<tr>
 				<td class="text-center"><%= post.id %></td>
-				<td><%= link_to post.title, admin_post_path(post), class: "underline" %></td>
+				<td><%= link_to post.title, post_path(post), class: "underline" %></td>
 				<td class="text-center"><%= post.text %></td>
-				<td><%= link_to post.genre.name, admin_posts_path(genre_id: post.genre_id) %></td>
 				<td>公開ステータス</td>
 			</tr>
 		<% end %>

@@ -7,7 +7,7 @@ devise_for :customers, controllers: {
 }
 scope module: :public do
     root 'homes#top'
-    
+    get '/homes/about' => "homes#about", as: 'about'
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
@@ -16,7 +16,8 @@ scope module: :public do
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     
-    resources :items, only: [:index, :show] 
+    resources :posts, only: [:new, :index, :create, :edit, :update, :destroy]
+    resources :news_letters, only: [:index, :create, :edit, :update, :destroy]
     
   end
     
@@ -31,8 +32,10 @@ namespace :admin do
     get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :posts, only: [:index, :create, :edit, :update, :destroy]
+    resources :news_letters, only: [:index, :create, :edit, :update, :destroy]
+    resources :genres, only: [:show], as: "customers_genres", path: "customers/genres"
 end
 
 end 

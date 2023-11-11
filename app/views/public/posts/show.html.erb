@@ -17,10 +17,6 @@
 					<td>本文</td>
 					<td><%= @post.text %></td>
 				</tr>
-				<tr>
-					<td>ジャンル</td>
-					<td><%= link_to @post.genre.name, admin_posts_path(genre_id: @post.genre_id), class: "underline" %></td>
-				</tr>
 			</tbody>
 		</table>
 		<div>

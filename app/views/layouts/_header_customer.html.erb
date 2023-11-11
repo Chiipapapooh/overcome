@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/"><%= image_tag 'logo.png', :size =>'100x100' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <span class="welcome message for loged-in customer">
+        ようこそ、<%= current_customer.nickname %>さん！
+      </span>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+           <li>
+            <%= link_to mypage_path, class: 'nav-link text-dark' do %>
+            マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to posts_path, class: 'nav-link text-dark' do %>
+            投稿一覧
+          　<% end %>
+          </li>
+          <li>
+            <%= link_to news_letters_path, class: 'nav-link text-dark' do %>
+            ニュース一覧
+          　<% end %>
+          </li>
+          <li>
+            <%= link_to destroy_customer_session_path, class: 'nav-link text-dark', method: :delete do %>
+            ログアウト
+          　<% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
