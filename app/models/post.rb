@@ -1,16 +1,22 @@
 class Post < ApplicationRecord
-  has_one_attached :image
-
-  validates :title, presence: true
-  validates :text, presence: true
-  validate :image_type
+  belongs_to :customer
   
-  enum sharing_status: { published: 0, draft: 1,  unpublished: 2 }
+  with_options presence: true, on: :publicize do
+     validates :title, presence: true
+     validates :text, presence: true
+     validates :image
+  end 
+  
+  # def nickname
+  # @post.nickname
+  # end 
+  
+  has_one_attached :image
   
   def get_image(*size)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no-image.png')
-      image.attach(io: File.open(file_path), filename: 'no-image.png', content_type: 'image/png')
+      file_path = Rails.root.join('app/assets/images/no_image.png')
+      image.attach(io: File.open(file_path), filename: 'no_image.png', content_type: 'image/png')
     end
     
     if !size.empty?

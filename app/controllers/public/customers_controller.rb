@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
   before_action :set_current_customer
   
   def show
+    @posts = current_customer.posts
+
   end
 
   def edit

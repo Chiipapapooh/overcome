@@ -8,7 +8,7 @@
 		</h3>
 		<% if @posts.first %>
 			<%= render 'public/posts/index', posts: @posts %>
-			<%= paginate @posts %>
+			<%#= paginate @posts %>
 		<% else %>
 			<h3>対応する投稿はありませんでした。</h3>
 		<% end %>

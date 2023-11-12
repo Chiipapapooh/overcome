@@ -16,7 +16,7 @@ scope module: :public do
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     
-    resources :posts, only: [:new, :index, :create, :edit, :update, :destroy]
+    resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy]
     resources :news_letters, only: [:index, :create, :edit, :update, :destroy]
     
   end

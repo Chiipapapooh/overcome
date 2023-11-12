@@ -87,10 +87,11 @@ ActiveRecord::Schema.define(version: 2023_11_02_033450) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "genre_id", null: false
     t.string "title", null: false
     t.string "text", null: false
-    t.integer "sharing_status", default: 0, null: false
+    t.boolean "is_draft", default: true, null: false
+    t.integer "customer_id", null: false
+    t.string "nickname", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
