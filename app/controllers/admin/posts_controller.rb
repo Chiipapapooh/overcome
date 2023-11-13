@@ -6,11 +6,13 @@ class Admin::PostsController < ApplicationController
  def index
    @posts = Post.all
    @post = Post.new
+   @customer = Customer.all
  end 
  
  def destroy
-   @post.destroy
-   redirect_to posts_path
+   post = Post.find(params[:id])
+   post.destroy
+   redirect_to admin_posts_path
  end 
  
  private

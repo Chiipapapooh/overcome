@@ -1,0 +1,16 @@
+  <section class="wrapper flex">
+	<div class="inner">
+		<h2 class="section-ttl">投稿一覧</h2>
+		<h3 class="text-right">
+			<%= link_to new_post_path do %>
+        <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+        <% end %>
+		</h3>
+		<% if @posts.first %>
+			<%= render 'admin/posts/index', posts: @posts %>
+			<%#= paginate @posts %>
+		<% else %>
+			<h3>対応する投稿はありませんでした。</h3>
+		<% end %>
+	</div>
+</section>

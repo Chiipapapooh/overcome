@@ -1,4 +1,41 @@
-<section class="inner">
-	<h2 class="section-ttl"><%= @news_letter.name %>の編集</h2>
-  <%= render 'form', news_letter: @news_letter, url: admin_news_letter_path(@news_letter), submit: '更新' %>
-</section>
+<%= form_with model:@news_letter do |f| %>
+	<%#= render 'layouts/error_messages', resource: post %>
+	<div class="flex">
+		<div>
+			<div class="image_field">
+				<tr>
+				  <td><%= f.label :画像 %></td>
+                  <td><%= f.file_field :image,accept: "image/*" %></td>
+				</tr>
+			</div>
+		</div>
+		<table class="news_letter_info news_letter_form">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= f.label :news_title, "タイトル" %></td>
+					<td><%= f.text_field :news_title %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :news_text, "本文" %></td>
+					<td><%= f.text_area :news_text, rows: 3 %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="flex align-center pl5">
+		  <% if @news_letter.is_draft == true %>
+            <%= f.submit "投稿を公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
+            <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+          <% else %>
+            <%= f.submit "投稿を更新", :name => 'update_news_letter', class:'btn btn-sm btn-warning text-light' %>
+          <% end %>
+        </div>
+        <div class="mt-4 pb-3 text-center">
+          <u><%= link_to "投稿を削除", news_letter_path(@news_letter.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class:'text-danger' %></u>
+        </div>
+<% end %>

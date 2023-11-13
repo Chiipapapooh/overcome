@@ -1,21 +1,28 @@
-<table class="posts has_border">
-	<thead>
-		<tr>
-			<th>ニックネーム</th>
-			<th>タイトル</th>
-			<th>本文</th>
-			<th>画像</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% posts.each do |post| %>
-			<tr>
-				<td class="text-center"><%= post.nickname %></td>
-				<td><%= link_to post.title, post_path(post), class: "underline" %></td>
-				<td class="text-center"><%= post.text %></td>
-				<td class="text-center"><%= image_tag post.get_image, size:'300x200' %></td>
-				
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+  <div class="row">
+  	<div class="col-1">
+  	</div>
+  	<div class="col-8 mt-3">
+  	  <table class="table">
+  	  <thead>
+  	  	<tr>
+  	  		<th style="background-color: #F2F2F2;">ニックネーム</th>
+  	  		<th style="background-color: #F2F2F2;">タイトル</th>
+  	  		<th style="background-color: #F2F2F2;">本文</th>
+  	  		<th style="background-color: #F2F2F2;">画像</th>
+  	  		<th style="background-color: #F2F2F2;">いいね</th>
+  	  	</tr>
+  	  </thead>
+  	  <tbody>
+  	   <% posts.each do |post| %>
+  	     <tr>
+  	     	<td align="center"><%= post.nickname %></td>
+  	     	<td align="center"><%= link_to post.title, post_path(post), class: "underline" %></td>
+  	     	<td align="center"><%= post.text %></td>
+  	     	<td align="center"><%= image_tag post.image, size:'300x200' %></td>
+  	     	<td align="center"><%= render "public/favorites/btn", post: post %></td>
+  	     </tr>
+  	   <% end %>
+  	  </tbody>
+  	</table>
+  </div>
+ </div>

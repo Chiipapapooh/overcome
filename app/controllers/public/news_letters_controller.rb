@@ -18,6 +18,6 @@ class Public::NewsLettersController < ApplicationController
  private
  
  def post_params
-   params.require(:news_letter).permit(:news_title, :news_text)
+   params.require(:news_letter).permit(:news_title, :news_text, :image)
  end
 end

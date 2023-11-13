@@ -1,0 +1,33 @@
+<%= form_with model:@post do |f| %>
+	<%#= render 'layouts/error_messages', resource: post %>
+	<div class="flex">
+		<div>
+			<div class="image_field">
+				<tr>
+				  <td><%= f.label :画像 %></td>
+                  <td><%= f.file_field :image,accept: "image/*" %></td>
+				</tr>
+			</div>
+		</div>
+		<table class="post_info post_form">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= f.label :title, "タイトル" %></td>
+					<td><%= f.text_field :title %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :text, "本文" %></td>
+					<td><%= f.text_area :text, rows: 3 %></td>
+				</tr>
+			</tbody>
+		</table>
+        <div class="mt-4 pb-3 text-center">
+          <u><%= link_to "投稿を削除", admin_post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class:'text-danger' %></u>
+        </div>
+<% end %>

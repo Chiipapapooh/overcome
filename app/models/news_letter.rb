@@ -4,9 +4,7 @@ belongs_to :genre
 
   validates :news_title, presence: true
   validates :news_text, presence: true
-  validate :image_type
-  
-  scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
+  validate :image
   
   def get_image(*size)
     unless image.attached?

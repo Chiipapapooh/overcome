@@ -16,8 +16,11 @@ scope module: :public do
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     
-    resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy]
-    resources :news_letters, only: [:index, :create, :edit, :update, :destroy]
+    resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
+    end
+    resources :news_letters, only: [:index, :show]
     
   end
     
@@ -33,8 +36,8 @@ namespace :admin do
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :posts, only: [:index, :create, :edit, :update, :destroy]
-    resources :news_letters, only: [:index, :create, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :news_letters, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :genres, only: [:show], as: "customers_genres", path: "customers/genres"
 end
 

@@ -4,7 +4,7 @@ class CreateNewsLetters < ActiveRecord::Migration[6.1]
       t.integer :genre_id, null: false
       t.string :news_title, null: false
       t.string :news_text, null: false
-      t.integer :sharing_status, null: false, default: 0
+      t.boolean :is_draft, null: false, default: true
 
       t.timestamps
     end

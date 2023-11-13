@@ -1,7 +1,7 @@
 <section class="inner">
 	<h2 class="section-ttl">投稿詳細</h2>
 	<div class="flex">
-		<table class="admin_post_info">
+		<table class="post_info">
 			<thead>
 				<tr>
 					<th></th>	
@@ -24,10 +24,6 @@
 					<td>本文</td>
 					<td><%= @post.text %></td>
 				</tr>
-				<!--<tr>-->
-				<!--	<td>画像</td>-->
-				<!--	<td><%#= image_tag @post.image, size:'300x200' %></td>-->
-				<!--</tr>-->
 				<tr>
 					<td>公開ステータス</td>
 					<% if @post.is_draft == true %>
@@ -44,7 +40,7 @@
 			</div>
 		</div>
 		<div class="flex align-center pl5">
-			<%= link_to "編集する", edit_admin_post_path(@post), class: "btn btn-success" %>
+			<%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
 		</div>
 	</div>
 </section>

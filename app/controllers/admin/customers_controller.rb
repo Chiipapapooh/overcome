@@ -3,17 +3,25 @@ class Admin::CustomersController < ApplicationController
 #   before_action :ensure_customer, only: [:show, :edit, :update]
 
   def index
-    @customers = Customer.all.page(params[:page]).per(10)
+    @customers = Customer.all
   end
 
   def show
+    @customer = Customer.find(params[:id])
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer.update(customer_params) ? (redirect_to admin_customer_path(@customer)) : (render :edit)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      flash[:success] = "登録情報の変更が完了しました"
+      redirect_to admin_customer_path(@customer)
+    else
+      render :edit
+    end
   end
 
   private
@@ -22,7 +30,4 @@ class Admin::CustomersController < ApplicationController
     params.require(:customer).permit(:last_name, :first_name, :first_name_kana, :last_name_kana, :nickname, :email, :is_active, :member_type)
   end
 
-  # def ensure_customer
-  #   @customer = Customer.find(params[:id])
-  # end
 end

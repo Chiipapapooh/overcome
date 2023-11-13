@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
  def show
    @post = Post.find(params[:id])
+   @post_comment = PostComment.new
  end 
  
  def index
@@ -32,18 +33,10 @@ class Public::PostsController < ApplicationController
     end
    end
  end
- # def create
- #   @post = Post.new(post_params)
- #   @post.customer_id = current_customer.id
- #   if @post.save
- #       redirect_to post_path(@post), notice: "You have created book successfully."
- #   else
- #     @posts = Post.all
- #     render 'index'
- #   end
- # end 
  
  def edit
+    @post = Post.find(params[:id])
+    @customer = current_customer
  end
  
  def update
@@ -71,16 +64,10 @@ class Public::PostsController < ApplicationController
       end
     end
  end 
- # def update
- #   if @post.update(post_params)
- #     redirect_to post_path(@post), notice: "You have updated book successfully."
- #   else
- #     render "edit"
- #   end 
- # end 
  
  def destroy
-   @post.destroy
+   post = Post.find(params[:id])
+   post.destroy
    redirect_to posts_path
  end 
  
