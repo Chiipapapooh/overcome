@@ -11,3 +11,9 @@ import "../stylesheets/application";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import 'bootstrap-tagsinput';
+
+$(document).ready(function() {
+  $("input[data-role='tagsinput']").tagsinput();
+});

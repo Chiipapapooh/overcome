@@ -10,6 +10,7 @@
   	  		<th style="background-color: #F2F2F2;">本文</th>
   	  		<th style="background-color: #F2F2F2;">画像</th>
   	  		<th style="background-color: #F2F2F2;">いいね</th>
+  	  		<th style="background-color: #F2F2F2;">タグ</th>
   	  	</tr>
   	  </thead>
   	  <tbody>
@@ -20,6 +21,21 @@
   	     	<td align="center"><%= post.text %></td>
   	     	<td align="center"><%= image_tag post.image, size:'300x200' %></td>
   	     	<td align="center"><%= render "public/favorites/btn", post: post %></td>
+  	     	<td align="center">
+  	     	  <div class="tags">
+            <% if @tags.present? %>
+            <div class="d-flex flex-wrap">
+            <% @tags.each do |tag| %>
+	          <span class="badge badge-info mr-2 mb-2">
+	          <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name), class: "text-white" %>
+          	</span>
+            <% end %>
+            </div>
+            <% else %>
+            <p>登録されているタグはありません</p>
+            <% end %>
+            </div>
+  	     	</td>
   	     </tr>
   	   <% end %>
   	  </tbody>

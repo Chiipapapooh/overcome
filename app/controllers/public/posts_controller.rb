@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
  def show
    @post = Post.find(params[:id])
    @post_comment = PostComment.new
+   @tags = @post.tag_counts_on(:tags)
  end 
  
  def index
@@ -74,7 +75,7 @@ class Public::PostsController < ApplicationController
  private
  
  def post_params
-   params.require(:post).permit(:title, :text, :image, :nickname)
+   params.require(:post).permit(:title, :text, :image, :nickname, :tag_list)
  end 
  
 end 

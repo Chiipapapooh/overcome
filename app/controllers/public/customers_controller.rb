@@ -2,10 +2,14 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :set_current_customer
   
+  def index
+    @customers = Customer.all
+  end
+  
   def show
     @posts = current_customer.posts
-
   end
+  
 
   def edit
   end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'tags/index'
+    get 'tags/edit'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers, controllers: {
@@ -15,12 +19,14 @@ scope module: :public do
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+    get "/search", to: "searches#search"
     
     resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
     resources :news_letters, only: [:index, :show]
+    resources :tags, only: [:show]
     
   end
     
@@ -39,6 +45,7 @@ namespace :admin do
     resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :news_letters, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :genres, only: [:show], as: "customers_genres", path: "customers/genres"
+    resources :tags, only: [:index, :create, :edit, :update, :destroy]
 end
 
 end 

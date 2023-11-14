@@ -9,6 +9,9 @@ class Post < ApplicationRecord
  
   has_one_attached :image
   
+  # gem:acts_as_taggableの使用
+  acts_as_taggable_on :tags
+  
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
