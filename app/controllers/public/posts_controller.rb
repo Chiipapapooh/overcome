@@ -9,6 +9,7 @@ class Public::PostsController < ApplicationController
    @posts = Post.where(is_draft: false)
    @post = Post.new
    @customer = Customer.all
+   @tags = @post.tag_counts_on(:tags)
  end 
  
  def new

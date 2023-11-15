@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row  text-center">
+      <h2 class="head-line title">マイページ</h2>
+  </div>
+  <div class="row  text-center">
+    <div class="col-2">
+      登録情報
+    </div>
+    <div class="col-2">
+      <div>
+      	<%= link_to "編集する", edit_information_path, class: "btn btn-success ml2" %>
+      </div>
+     </div>
+    <div class="col-8">
+      <div>
+      	<%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-success ml2" %>
+      </div>
+    </div>
+  </div>
+ </div>
+
+  <div class="row">
+  	<div class="col-1">
+  	</div>
+  	<div class="col-8 mt-3">
+  	  <table class="my-page-table table table-bordered">
+  	  	<tbody>
+  	  		<tr>
+  	  			<td>名前</td>
+  	  			<td><%= @customer.last_name %> <%= @customer.first_name %></td>
+  	  		</tr>
+  	  		<tr>
+  	  			<td>フリガナ</td>
+  	  			<td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+  	  		</tr>
+  	  		<tr>
+  	  			<td>ニックネーム</td>
+  	  			<td><%= @customer.nickname %></td>
+  	  		</tr>
+  	  		<tr>
+  	  			<td>メールアドレス</td>
+  	  			<td><%= @customer.email %></td>
+  	  		</tr>
+  	  	</tbody>
+  	  </table>
+  	</div>
+  </div>
+  
+  <div class="container">
+  <div class="row  text-center">
+      <h2 class="head-line title">マイ投稿一覧</h2>
+  </div>
+  </div>
+  
+  <div class="row">
+  	<div class="col-1">
+  	</div>
+  	<div class="col-8 mt-3">
+  	  <table class="table">
+  	  <thead>
+  	  	<tr>
+  	  		<th style="background-color: #F2F2F2;">投稿ID</th>
+  	  		<th style="background-color: #F2F2F2;">投稿ステータス</th>
+  	  		<th style="background-color: #F2F2F2;">タイトル</th>
+  	  		<th style="background-color: #F2F2F2;">本文</th>
+  	  		<th style="background-color: #F2F2F2;">画像</th>
+  	  	</tr>
+  	  </thead>
+  	  <tbody>
+  	   <% @posts.each do |post| %>
+  	     <tr>
+  	     	<td align="center"><%= post.id %></td>
+  	     	<td align="center"><% if post.is_draft == true %>
+  	     	<span style="color:gray;"><%= "下書き" %></span>
+  	     	<% else %>
+  	     	<strong style="color:green;"><%= "公開中" %></strong>
+  	     	<% end %>
+  	     	</td>
+  	     	<td align="center"><%= link_to post.title, post_path(post), class: "underline" %></td>
+  	     	<td align="center"><%= post.text %></td>
+  	     	<td align="center"><%= image_tag post.image, size:'300x200' %></td>
+  	     </tr>
+  	   <% end %>
+  	  </tbody>
+  	</table>
+  </div>
+ </div>

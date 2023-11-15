@@ -20,6 +20,9 @@ scope module: :public do
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     get "/search", to: "searches#search"
+    get :liked_posts
+    
+    resources :customers, only: [:index, :show]
     
     resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]

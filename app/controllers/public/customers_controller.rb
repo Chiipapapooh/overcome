@@ -7,7 +7,17 @@ class Public::CustomersController < ApplicationController
   end
   
   def show
-    @posts = current_customer.posts
+    if params[:id].nil?
+      @customer = current_customer
+    else
+      @customer = Customer.find(params[:id])
+    end 
+    
+    if @customer == current_customer
+       @posts = current_customer.posts
+    else
+       @posts = @customer.posts.where(is_draft: false)
+    end 
   end
   
 
@@ -29,6 +39,10 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_active: false)
     reset_session
     redirect_to root_path
+  end
+  
+  def liked_posts
+  @liked_posts = Post.liked_posts(current_customer, params[:page], 12)
   end
 
   private

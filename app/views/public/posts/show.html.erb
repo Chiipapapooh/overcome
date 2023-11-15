@@ -25,14 +25,7 @@
 					<td><%= @post.text %></td>
 				</tr>
 				<tr>
-					<td>公開ステータス</td>
-					<% if @post.is_draft == true %>
-					<td>下書き</td>
-					<% else %>
-					<td>公開中</td>
-					<% end %>
-				</tr>
-				<tr>
+					<td>タグ</td>
 					<td>
 					  <div class="tags">
                       <% if @tags.present? %>
@@ -47,6 +40,13 @@
                       <p>登録されているタグはありません</p>
                       <% end %>
                       </div>	
+					</td>
+				</tr>
+				<tr>
+					<td>コメント数： <%= @post.post_comments.count %></td>
+					<td>
+					  <%= render "public/post_comments/index", post: @post %>
+                      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
 					</td>
 				</tr>
 			</tbody>

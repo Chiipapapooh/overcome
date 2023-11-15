@@ -1,0 +1,18 @@
+<table class="customer_index has_border">
+	<thead>
+		<th>名前</th>
+		<th>フリガナ</th>
+		<th>ニックネーム</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<% customers.each do |customer| %>
+			<tr>
+				<td><%= customer.nickname %></td>
+				<td><%= customer.full_name %></td>
+				<td><%= customer.full_name_kana %></td>
+				<td><%= link_to "詳細", customer_path(customer), class: "btn btn-primary" %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

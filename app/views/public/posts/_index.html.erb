@@ -11,6 +11,7 @@
   	  		<th style="background-color: #F2F2F2;">画像</th>
   	  		<th style="background-color: #F2F2F2;">いいね</th>
   	  		<th style="background-color: #F2F2F2;">タグ</th>
+  	  		<th style="background-color: #F2F2F2;">コメント数</th>
   	  	</tr>
   	  </thead>
   	  <tbody>
@@ -36,6 +37,7 @@
             <% end %>
             </div>
   	     	</td>
+  	     	<td align="center">コメント数： <%= @post.post_comments.count %></td>
   	     </tr>
   	   <% end %>
   	  </tbody>
