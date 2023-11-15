@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
  def show
    @post = Post.find(params[:id])
    @post_comment = PostComment.new
+   @post_comments = PostComment.all
    @tags = @post.tag_counts_on(:tags)
  end 
  
@@ -10,6 +11,8 @@ class Public::PostsController < ApplicationController
    @post = Post.new
    @customer = Customer.all
    @tags = @post.tag_counts_on(:tags)
+   @post_comments = PostComment.all
+   #@post_comment = PostComment.find(params[:id])
  end 
  
  def new

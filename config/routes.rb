@@ -22,6 +22,7 @@ scope module: :public do
     get "/search", to: "searches#search"
     get :liked_posts
     
+    
     resources :customers, only: [:index, :show]
     
     resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do

@@ -5,11 +5,11 @@
       <h4 class="headline mt-5 ml-5">Tag: <%= @tag.name %>の一覧（<%= @total_posts_count %>件）</h4>
       <div class="row mt-3">
         <% @tagged_posts = @tagged_posts.order(impressions_count: :desc) %>
-        <% @tagged_posts.each do |post| %>
+        
           <%# byebug %>
           <%#= render partial: 'public/posts/index', locals: { posts: post } %>
           <%= render partial: 'public/posts/index', locals: { posts: @tagged_posts } %>
-        <% end %>
+  
       </div>
     　　  <% else %>
         <h1 class="tags-title">Tag not found</h1>

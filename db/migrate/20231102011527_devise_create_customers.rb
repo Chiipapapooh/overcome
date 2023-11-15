@@ -40,6 +40,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :nickname,               null: false
       t.boolean :is_active,             null: false, default: true
       t.integer :member_type,           null: false, default: 0
+      t.integer :customer_status, default: 0
 
       t.timestamps null: false
     end

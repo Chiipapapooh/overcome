@@ -50,7 +50,7 @@
 			<tbody>
 				<tr>
 					<td>ジャンル</td>
-					<td><%= link_to @news_letter.genre.name, admin_news_letters_path(genre_id: @item.genre_id), class: "underline" %></td>
+					<td><%= link_to @news_letter.genre.name, admin_news_letters_path(genre_id: @news_letter.genre_id), class: "underline" %></td>
 				</tr>
 				<tr>
 					<td>タイトル</td>

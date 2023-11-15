@@ -10,6 +10,8 @@ class Admin::NewsLettersController < ApplicationController
  
  def new
    @news_letter = NewsLetter.new
+   @genres = Genre.all
+   @genre = Genre.new
  end 
  
  def create
@@ -69,6 +71,6 @@ class Admin::NewsLettersController < ApplicationController
  private
  
  def news_letter_params
-   params.require(:news_letter).permit(:news_title, :news_text, :image)
+   params.require(:news_letter).permit(:news_title, :news_text, :image, :genre_id)
  end
 end

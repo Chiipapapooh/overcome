@@ -1,0 +1,5 @@
+ja:
+  customer: 
+        status:
+          available: "利用可能"
+          suspended: "利用停止中"

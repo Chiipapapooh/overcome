@@ -12,7 +12,7 @@
 			<h2 class="section-ttl">ニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
 		<% end %>
 		<% if @news_letters.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
-			<div class="items">
+			<div class="news_letters">
 				<% @news_letters.each do |news_letter| %>
 					<%= link_to news_letter_path(news_letter) do %>
 						<%= image_tag news_letter.get_image, format: "jpeg", fallback: "no-image.png" %>
@@ -22,7 +22,7 @@
 					<% end %>
 				<% end %>
 			</div>
-			<%= paginate @news_letters %>
+			<%#= paginate @news_letters %>
 		<% else %>
 			<h3>対応するニュースはありませんでした。</h3>
 		<% end %>

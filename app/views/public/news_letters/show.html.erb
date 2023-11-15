@@ -2,7 +2,7 @@
 	<div class="sidebar">
 		<h3>ジャンル一覧</h3>
 		<% @genres.each do |genre| %>
-		<%= link_to genre.name, items_path(genre_id: genre.id) %>
+		<%= link_to genre.name, news_letters_path(genre_id: genre.id) %>
 		<% end %>
 	</div>
 	<div class="content">

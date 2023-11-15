@@ -24,9 +24,9 @@
   	     	<td align="center"><%= render "public/favorites/btn", post: post %></td>
   	     	<td align="center">
   	     	  <div class="tags">
-            <% if @tags.present? %>
+            <% if post.tags.present? %>
             <div class="d-flex flex-wrap">
-            <% @tags.each do |tag| %>
+            <% post.tags.each do |tag| %>
 	          <span class="badge badge-info mr-2 mb-2">
 	          <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name), class: "text-white" %>
           	</span>
@@ -37,7 +37,7 @@
             <% end %>
             </div>
   	     	</td>
-  	     	<td align="center">コメント数： <%= @post.post_comments.count %></td>
+  	     	<td align="center">コメント数： <%= post.post_comments.count %></td>
   	     </tr>
   	   <% end %>
   	  </tbody>

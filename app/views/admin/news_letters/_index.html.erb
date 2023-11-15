@@ -8,14 +8,16 @@
   	  		<th style="background-color: #F2F2F2;">タイトル</th>
   	  		<th style="background-color: #F2F2F2;">本文</th>
   	  		<th style="background-color: #F2F2F2;">画像</th>
+  	  		<th style="background-color: #F2F2F2;">ジャンル</th>
   	  	</tr>
   	  </thead>
   	  <tbody>
   	   <% news_letters.each do |admin_news_letter| %>
   	     <tr>
-  	     	<td align="center"><%= link_to news_letter.news_title, admin_news_letter_path(news_letter), class: "underline" %></td>
-  	     	<td align="center"><%= news_letter.news_text %></td>
-  	     	<td align="center"><%= image_tag news_letter.image, size:'300x200' %></td>
+  	     	<td align="center"><%= link_to admin_news_letter.news_title, admin_news_letter_path(admin_news_letter), class: "underline" %></td>
+  	     	<td align="center"><%= admin_news_letter.news_text %></td>
+  	     	<td align="center"><%= image_tag admin_news_letter.image, size:'300x200' %></td>
+  	     	<td align="center"><%= admin_news_letter.genre.name %></td>
   	     </tr>
   	   <% end %>
   	  </tbody>
