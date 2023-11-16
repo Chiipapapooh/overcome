@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.boolean :is_draft, null: false, default: true
       t.integer :customer_id, null: false
       t.string :nickname, null: false
+      t.integer :status, null: false, default: 0
 
       t.timestamps
     end

@@ -19,13 +19,18 @@ scope module: :public do
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
-    get "/search", to: "searches#search"
     get :liked_posts
+    resources :reports, only: [:new, :create]
     
-    
-    resources :customers, only: [:index, :show]
+    resources :customers, param: :account, only: [:index, :show] do
+      member do
+        get :liked_posts
+      end
+    end
     
     resources :posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
+      get :search, on: :collection
+      get :search_name, on: :collection
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
@@ -42,8 +47,9 @@ devise_for :admin, controllers: {
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 namespace :admin do
     get 'top' => 'homes#top', as: 'top'
-    get 'search' => 'homes#search', as: 'search'
+    #get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
+    get "/admin/search", to: "searches#search"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]

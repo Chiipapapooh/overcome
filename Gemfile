@@ -59,3 +59,4 @@ gem 'devise'
 gem 'acts-as-taggable-on'
 gem 'kaminari','~> 1.2.1'
 gem "enum_help"
+gem 'simple_form'

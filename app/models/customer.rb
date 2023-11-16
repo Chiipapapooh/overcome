@@ -20,24 +20,24 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :email, presence: true, uniqueness: true
   
-  # def first_name
-  # end
-  
-  # def last_name
-  # end
-  
-  # def first_name_kana
-  # end 
-  
-  # def last_name_kana
-  # end 
-  
   def full_name
     self.first_name + " " + self.last_name
   end
 
   def full_name_kana
     self.first_name_kana + " " + self.last_name_kana
+  end
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Customer.where(first_name: content)
+    elsif method == 'forward'
+      Customer.where('first_name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Customer.where('first_name LIKE ?', '%' + content)
+    else
+      Customer.where('first_name LIKE ?', '%' + content + '%')
+    end
   end
   
 end

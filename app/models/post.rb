@@ -39,6 +39,18 @@ class Post < ApplicationRecord
     .page(page) # 5. ページネーションのため、指定ページに表示するデータを選択
     .per(per_page) # 6. ページごとのデータ数を指定
   end
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(title: content)
+    elsif method == 'forward'
+      Post.where('title LIKE ?', content + '%')
+    elsif method == 'backward'
+      Post.where('title LIKE ?', '%' + content)
+    else
+      Post.where('title LIKE ?', '%' + content + '%')
+    end
+  end
 
   private
   
