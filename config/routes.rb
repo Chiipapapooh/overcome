@@ -11,6 +11,7 @@ devise_for :customers, controllers: {
 }
 scope module: :public do
     root 'homes#top'
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
     get '/homes/about' => "homes#about", as: 'about'
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
