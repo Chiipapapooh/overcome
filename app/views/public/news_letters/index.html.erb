@@ -1,17 +1,22 @@
-<section class="wrapper flex">
-	<div class="sidebar">
+<div class="container">
+	<div class="container px-5 px-sm-0">
+		<div class="row">
+			<div class="col-md-3">
 		<h3>ジャンル一覧</h3>
 		<% @genres.each do |genre| %>
 			<%= link_to genre.name, news_letters_path(genre_id: genre.id) %>
 		<% end %>
+	        </div>
+	    </div>
 	</div>
-	<div class="content">
+	
+	<div class="col-md-8 offset-md-1">
 		<% if params[:genre_id] %>
 			<h2 class="section-ttl"><%= @genre.name %>のニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
 		<% else %>
 			<h2 class="section-ttl">ニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
 		<% end %>
-		<% if @news_letters.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+		<% if @news_letters.first %> 
 			<div class="news_letters">
 				<% @news_letters.each do |news_letter| %>
 					<%= link_to news_letter_path(news_letter) do %>
@@ -27,4 +32,4 @@
 			<h3>対応するニュースはありませんでした。</h3>
 		<% end %>
 	</div>
-</section>
+</div>

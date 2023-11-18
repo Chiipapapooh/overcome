@@ -3,29 +3,18 @@
 	<div class="flex">
 		<table class="post_info">
 			<thead>
-				<tr>
-					<th></th>	
+					<th>ニックネーム</th>	
+					<th>タイトル</th>
+					<th>本文</th>
+					<th>タグ</th>
+					<th>コメント数</th>
 					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>ニックネーム</td>
 					<td><%= @post.nickname %></td>
-				</tr>
-				<tr>
-					<td>タイトル</td>
-					<td><%= @post.title %></td>
-				</tr>
-				<tr>
-					<td>本文</td>
+				    <td><%= @post.title %></td>
 					<td><%= @post.text %></td>
-				</tr>
-				<tr>
-					<td>タグ</td>
 					<td>
 					  <div class="tags">
                       <% if @tags.present? %>
@@ -41,23 +30,21 @@
                       <% end %>
                       </div>	
 					</td>
-				</tr>
-				<tr>
-					<td>コメント数： <%= @post.post_comments.count %></td>
-					<td>
-					  <%= render "public/post_comments/index", post: @post %>
-                      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
-					</td>
+					<td><%= @post.post_comments.count %></td>
+					<td><%= image_tag @post.get_image, size:'300x200', id: "img_prev", class: "post_image" %></td>
+					<td><%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %></td>
 				</tr>
 			</tbody>
 		</table>
 		<div>
-			<div class="image_field">
-				<%= image_tag @post.get_image, size:'300x200', id: "img_prev", class: "admin_post_image" %>
+			<div class="comment">
+				<%= render "public/post_comments/index", post: @post %>
 			</div>
 		</div>
-		<div class="flex align-center pl5">
-			<%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
+		<div>
+			<div class="form mr-2 mb-2">
+				<%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+			</div>
 		</div>
 	</div>
 </section>

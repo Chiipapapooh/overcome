@@ -25,7 +25,7 @@ class Admin::NewsLettersController < ApplicationController
     end
    else
     if @news_letter_new.update(is_draft: true)
-       redirect_to admin_news_letter_path, notice: "下書き保存しました！"
+       redirect_to admin_news_letters_path, notice: "下書き保存しました！"
     else
        redirect_to admin_news_letters_path, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end

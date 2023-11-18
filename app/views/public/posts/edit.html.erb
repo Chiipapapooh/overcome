@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with model:@post do |f| %>
 	<%#= render 'layouts/error_messages', resource: post %>
 	<div class="flex">
@@ -40,10 +41,9 @@
             <%= f.submit "投稿を公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
             <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
           <% else %>
-            <%= f.submit "投稿を更新", :name => 'update_post', class:'btn btn-sm btn-warning text-light' %>
+            <%= f.submit "投稿を更新", :name => 'update_post', class:'btn btn-warning text-light' %>
           <% end %>
-        </div>
-        <div class="mt-4 pb-3 text-center">
-          <u><%= link_to "投稿を削除", post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class:'text-danger' %></u>
-        </div>
-<% end %>
+        </div></br>
+        <%= link_to "投稿を削除", post_path(@post.id), method: :delete, data: {confirm: "この投稿を削除しますか？"}, class:'btn btn-danger' %>
+      <% end %>
+      </div>
