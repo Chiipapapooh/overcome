@@ -5,9 +5,15 @@ class Public::NewsLettersController < ApplicationController
  end 
  
  def index
-   @news_letters = NewsLetter.all
-   @news_letter = NewsLetter.new
    @genres = Genre.all
+   @news_letter = NewsLetter.new
+   if params[:genre_id].present?
+       genre_id = params[:genre_id]
+       @genre = Genre.find(genre_id)
+       @news_letters = NewsLetter.all.where(genre_id: genre_id)
+   else
+       @news_letters = NewsLetter.all
+   end
  end 
  
  def destroy

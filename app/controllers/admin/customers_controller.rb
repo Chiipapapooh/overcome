@@ -8,6 +8,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @reported_count = Report.where(reported_customer_id: @customer.id).count
   end
 
   def edit

@@ -2,6 +2,3 @@
   <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class: "w-100" %>
   <%= f.submit "送信" %>
 <% end %>
-<div class="report-btn text-right ml-2" id="report-btn-<%= post_comment.id %>">
-　<%= render "public/reports/report_btn", comment: post_comment %>
-</div>

@@ -1,9 +1,9 @@
 <section class="wrapper flex">
 	<div class="inner">
-		<% if params[:genre_id] %>
-			<h2 class="section-ttl"><%= @genre.name %>のニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
+		<% if @genre.present? %>
+			<h2 class="section-ttl"><%= @genre.name %>のニュース一覧 (全<%= @news_letters.count %>件)</h2>
 		<% else %>
-			<h2 class="section-ttl">ニュース一覧 (全<%= @all_news_letters_count %>件)</h2>
+			<h2 class="section-ttl">ニュース一覧 (全<%= @news_letters.count %>件)</h2>
 		<% end %>
 		<h3 class="text-right">
 			<%= link_to new_admin_news_letter_path do %>

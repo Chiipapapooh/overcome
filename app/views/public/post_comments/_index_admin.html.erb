@@ -9,14 +9,9 @@
       </td>
       <td><%= post_comment.comment %></td>
       <td>
-        <% if post_comment.customer == current_customer %>
+        <% if admin_signed_in? %>
           <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger float-end" %>
         <% end %>
-      </td>
-      <td>
-        <div class="report-btn text-right ml-2" id="report-btn-<%= post_comment.id %>">
-　      <%= render "public/reports/report_btn", comment: post_comment %>
-        </div>
       </td>
     </tr>
     <% end %>

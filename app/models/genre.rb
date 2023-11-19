@@ -1,7 +1,5 @@
 class Genre < ApplicationRecord
-  has_many :posts
-
-  scope :only_active, -> { where(is_active: true) }
+  has_many :news_letters
 
   validates :name, presence: true, uniqueness: true
 end

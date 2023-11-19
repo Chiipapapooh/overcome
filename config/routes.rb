@@ -20,12 +20,12 @@ scope module: :public do
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     put 'customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
-    get :liked_posts
+    get :favorite_posts
     resources :reports, only: [:new, :create]
     
     resources :customers, param: :account, only: [:index, :show] do
       member do
-        get :liked_posts
+        get :favorite_posts
       end
     end
     
@@ -51,12 +51,13 @@ namespace :admin do
     #get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
     get "/admin/search", to: "searches#search"
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :posts, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :news_letters, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :genres, only: [:show], as: "customers_genres", path: "customers/genres"
     resources :tags, only: [:index, :create, :edit, :update, :destroy]
+    resources :post_comments, only: [:create, :destroy]
 end
 
 end 

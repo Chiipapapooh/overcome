@@ -1,20 +1,54 @@
-<section class="wrapper flex">
-	<div class="sidebar">
-		<h3>ジャンル一覧</h3>
-		<% @genres.each do |genre| %>
-		<%= link_to genre.name, news_letters_path(genre_id: genre.id) %>
-		<% end %>
-	</div>
-	<div class="content">
-		<h2 class="section-ttl"><%= @item.name %></h2>
-		<%= render 'layouts/error_messages', resource: @cart_item %>
-		<div class="flex">
-			<%= image_tag @item.get_image, class: "item_image" %>
-			<div class="item_info">
-				<h4><%= @item.introduction %></h4>
-				<p>ジャンル: <%= link_to @item.genre.name, items_path(genre_id: @item.genre_id) %></p>
-				
+<section class="inner">
+	<h2 class="section-ttl">ニュース詳細</h2>
+	<div class="flex">
+		<table class="news_letter_info">
+			<thead>
+				<tr>
+					<th></th>	
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ジャンル</td>
+					<td><%= link_to @news_letter.genre.name, news_letters_path(genre_id: @news_letter.genre_id), class: "underline" %></td>
+				</tr>
+				<tr>
+					<td>タイトル</td>
+					<td><%= @news_letter.news_title %></td>
+				</tr>
+				<tr>
+					<td>本文</td>
+					<td><%= @news_letter.news_text %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<div class="image_field">
+				<%= image_tag @news_letter.get_image, size:'300x200', id: "img_prev", class: "admin_post_image" %>
 			</div>
 		</div>
 	</div>
 </section>
+<!--<section class="wrapper flex">-->
+<!--	<div class="sidebar">-->
+<!--		<h3>ジャンル一覧</h3>-->
+<!--		<%# @genres.each do |genre| %>-->
+<!--		<%#= link_to genre.name, news_letters_path(genre_id: genre.id) %>-->
+<!--		<%# end %>-->
+<!--	</div>-->
+<!--	<div class="content">-->
+<!--		<h2 class="section-ttl"><%#= @item.name %></h2>-->
+<!--		<%#= render 'layouts/error_messages', resource: @cart_item %>-->
+<!--		<div class="flex">-->
+<!--			<%#= image_tag @item.get_image, class: "item_image" %>-->
+<!--			<div class="item_info">-->
+<!--				<h4><%#= @item.introduction %></h4>-->
+<!--				<p>ジャンル: <%#= link_to @item.genre.name, items_path(genre_id: @item.genre_id) %></p>-->
+				
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</section>-->

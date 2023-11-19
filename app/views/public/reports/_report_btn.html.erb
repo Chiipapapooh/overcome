@@ -15,7 +15,7 @@ $(document).ready(function() {
     $.ajax({
       url: '<%= new_report_path %>',
       type: 'GET',
-      data: { content_id: commentId, content_type: "Comment" },
+      data: { content_id: commentId, content_type: "PostComment" },
       success: function(response) {
         // 取得した報告フォームをモーダル内に表示
         $('#report-modal .common-modal-content').html(response);

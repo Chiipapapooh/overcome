@@ -24,6 +24,11 @@
 					<td>本文</td>
 					<td><%= @post.text %></td>
 				</tr>
+				<div>
+			<div class="comment">
+				<%= render "public/post_comments/index_admin", post: @post %>
+			</div>
+		</div>
 			</tbody>
 		</table>
 		<div>

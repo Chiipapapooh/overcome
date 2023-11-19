@@ -41,8 +41,10 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
   
-  def liked_posts
-  @liked_posts = Post.liked_posts(current_customer, params[:page], 12)
+  def favorite_posts
+    @customer = current_customer
+    @favorite_posts = Post.where(id: @customer.favorites.pluck(:post_id))
+    render 'liked_posts'
   end
 
   private
