@@ -30,7 +30,7 @@
 		<div class="flex align-center pl5">
 		  <% if @news_letter.is_draft == true %>
             <%= f.submit "投稿を公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
-            <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
+            <!--<%#= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>-->
           <% else %>
             <%= f.submit "投稿を更新", :name => 'update_news_letter', class:'btn btn-sm btn-warning text-light' %>
           <% end %>
