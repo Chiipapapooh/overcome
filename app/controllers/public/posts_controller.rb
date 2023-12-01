@@ -23,9 +23,13 @@ class Public::PostsController < ApplicationController
  def create
    @post_new = Post.new(post_params)
    @post_new.customer_id = current_customer.id
+   tags = Vision.get_image_data(post_params[:image])
    if params[:publicize_draft]
     @post_new.is_draft = false
     if @post_new.save!
+        tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
        redirect_to post_path(@post_new), notice: "投稿を保存しました！"
     else
        redirect_to posts_path, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
