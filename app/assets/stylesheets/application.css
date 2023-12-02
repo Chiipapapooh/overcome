@@ -43,7 +43,12 @@
 @keyframes fadeOut {
   from { opacity: 1; }
   to { opacity: 0; }
-}/*
+}
+
+
+
+
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *

@@ -31,7 +31,12 @@
                       </div>	
 					</td>
 					<td><%= @post.post_comments.count %></td>
-					<td><%= image_tag @post.get_image, size:'300x200', id: "img_prev", class: "post_image" %></td>
+					<td>
+					  <%= image_tag @post.get_image, size:'300x200', id: "img_prev", class: "post_image" %><br>
+					  <% @post.vision_api_tags.each do |vision_api_tag| %>
+					  <span class="label"><%= vision_api_tag.name %></span>
+					  <% end %>
+					</td>
 					<td><%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %></td>
 				</tr>
 			</tbody>

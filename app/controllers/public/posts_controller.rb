@@ -21,21 +21,21 @@ class Public::PostsController < ApplicationController
  end 
  
  def create
-   @post_new = Post.new(post_params)
-   @post_new.customer_id = current_customer.id
-   tags = Vision.get_image_data(post_params[:image])
+   @post = Post.new(post_params)
+   @post.customer_id = current_customer.id
+   api_tags = Vision.get_image_data(post_params[:image])
    if params[:publicize_draft]
-    @post_new.is_draft = false
-    if @post_new.save!
-        tags.each do |tag|
-        @post.tags.create(name: tag)
+    @post.is_draft = false
+    if @post.save!
+      api_tags.each do |api_tag|
+        @post.vision_api_tags.create(name: api_tag)
       end
-       redirect_to post_path(@post_new), notice: "投稿を保存しました！"
+       redirect_to post_path(@post), notice: "投稿を保存しました！"
     else
        redirect_to posts_path, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end
    else
-    if @post_new.update(is_draft: true)
+    if @post.update(is_draft: true)
        redirect_to mypage_path(current_customer), notice: "下書き保存しました！"
     else
        redirect_to posts_path, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
